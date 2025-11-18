@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Bank</title></head>
+<body>
+<h3>Bank Transfer Result</h3>
+<div id="result"></div>
+<script>
+const amt = new URLSearchParams(location.search).get("transfer");
+document.getElementById("result").innerText = amt ? `Transferred ₹${amt} (Simulated)` : "No transfer";
+</script>
+</body>
+</html>
