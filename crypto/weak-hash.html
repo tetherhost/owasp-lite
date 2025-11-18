@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Weak Crypto</title></head>
+<body>
+<h2>Weak Hash Demo</h2>
+<input id="input" placeholder="Enter text"> <button onclick="hash()">Hash</button>
+<p id="out"></p>
+<script>
+function weakHash(str){
+let h = 0;
+for (let c of str) h += c.charCodeAt(0);
+return h.toString(16);
+}
+function hash(){
+const val = document.getElementById("input").value;
+document.getElementById("out").innerText = weakHash(val);
+}
+</script>
+</body>
+</html>
