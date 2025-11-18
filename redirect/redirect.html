@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Open Redirect</title></head>
+<body>
+<h2>Open Redirect Demo</h2>
+<script>
+const target = new URLSearchParams(location.search).get("next");
+if (target) location.href = target;
+</script>
+<p>Redirecting...</p>
+</body>
+</html>
