@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head><title>SQLi Simulator</title></head>
+<body>
+<h2>SQL Injection Simulator</h2>
+<form onsubmit="return login()">
+<input id="user" placeholder="username"><br>
+<input id="pass" placeholder="password" type="password"><br>
+<button>Login</button>
+</form>
+<p id="msg"></p>
+
+
+<script>
+const db = [ {user:"admin", pass:"admin123"} ];
+
+
+function login() {
+const u = document.getElementById("user").value;
+const p = document.getElementById("pass").value;
+
+
+if (p.includes("' OR '1'='1")) {
+document.getElementById("msg").innerText = "SQLi success! Logged in as admin.";
+return false;
+}
+
+
+const found = db.find(x => x.user === u && x.pass === p);
+document.getElementById("msg").innerText = found ? "Login success" : "Invalid credentials";
+return false;
+}
+</script>
+</body>
+</html>
