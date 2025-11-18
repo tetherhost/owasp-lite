@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Stored XSS</title></head>
+<body>
+<h2>Stored XSS (LocalStorage)</h2>
+<textarea id="comment" placeholder="Write a comment..."></textarea><br>
+<button onclick="addComment()">Post</button>
+
+
+<h3>Comments:</h3>
+<div id="comments"></div>
+
+
+<script>
+const list = JSON.parse(localStorage.getItem("comments") || "[]");
+function render() {
+document.getElementById("comments").innerHTML = list.join("<hr>");
+}
+function addComment() {
+list.push(document.getElementById("comment").value);
+localStorage.setItem("comments", JSON.stringify(list));
+render();
+}
+render();
+</script>
+</body>
+</html>
